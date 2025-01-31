@@ -75,9 +75,9 @@ void getDeps(const char *package, intS is_list) {
 
         char command[LEN_NAMES + 50];
         snprintf(command, sizeof(command),
-                 "paru -Si %s 2>/dev/null | grep 'Depends On' | sed \
-                 -e 's/.*: //' -e 's/>.*//' -e 's/=.*//' \
-                  | sort -u", current_package);
+                 "command paru -Si %s 2>/dev/null | grep 'Depends On' | sed \
+                 -e 's/.*: //' -e 's/>.*//' -e 's/=.*//' " \
+                 , current_package);
 
         FILE *fp = popen(command, "r");
         if (fp) {
