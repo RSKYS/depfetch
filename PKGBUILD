@@ -1,22 +1,20 @@
 # Maintainer's Red or something, can't even care for AUR.
 
 pkgname=depfetch
-pkgver=1.0
+pkgver=prime
 pkgrel=0
-pkgdesc="A simple program that does something"
-arch=('i686' 'x86_64')
-license=('GPL')
+pkgdesc='Time to slay all deps.'
+arch=(x86_64)
+license=(GPL-3.0-with-GCC-exception)
 url='https://github.com/RSKYS/depfetch'
-depends=()
-makedepends=('pacman' 'gcc' 'paru-bin')
-optdepends=()
-conflicts=()
-provides=()
+depends=('pacman' 'paru-bin')
+makedepends=('gcc')
 source=('main.c')
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    gcc -o "$pkgdir/usr/bin/depfetch" "${srcdir}/main.c"
+    mkdir -p $pkgdir/usr/bin
+    gcc -o "$pkgdir/usr/bin/$pkgname" "$srcdir/main.c"
 }
 
+options=('!debug' 'strip')
 md5sums=('SKIP')
